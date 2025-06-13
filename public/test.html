@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Test Page</title>
+    <script src="/analytics.js"></script>
+    <script>
+        Analytics.init('test-site-1', {
+            endpoint: 'http://localhost:3000/api/collect'
+        });
+    </script>
+</head>
+<body>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <h1>Analytics Test Page</h1>
+
+        <section style="margin: 20px 0;">
+            <h2>Click Tracking Test</h2>
+            <button data-analytics="test_button_click">Click Me</button>
+        </section>
+
+        <section style="margin: 20px 0;">
+            <h2>Form Tracking Test</h2>
+            <form data-analytics-form id="test-form" name="test-form">
+                <div style="margin-bottom: 10px;">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Submit Form</button>
+            </form>
+        </section>
+
+        <section style="margin: 20px 0;">
+            <h2>Custom Event Test</h2>
+            <button onclick="Analytics.trackEvent('custom_test', { value: 123 })">
+                Trigger Custom Event
+            </button>
+        </section>
+    </div>
+</body>
+</html>
